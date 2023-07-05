@@ -1,0 +1,20 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Invictus Radio Spotify Watchdog
+    style
+      include ../public/css/reset.css
+      include ../public/css/style.css
+    script(src="/js/script.js") 
+  
+  body(class="main-body" onload="reloadWindow()")
+    h1 Invictus Radio Spotify Watchdog
+    if state
+      p Speelt nu:
+      p #{state.item.name} - #{state.item.artists[0].name}
+    else
+      p Geen account verbonden
+      a(href="/login") Login met spotify

@@ -1,0 +1,39 @@
+diff --git a/node_modules/@spotify/web-api-ts-sdk/dist/cjs/endpoints/PlayerEndpoints.js b/node_modules/@spotify/web-api-ts-sdk/dist/cjs/endpoints/PlayerEndpoints.js
+index 846b276..84f9af0 100644
+--- a/node_modules/@spotify/web-api-ts-sdk/dist/cjs/endpoints/PlayerEndpoints.js
++++ b/node_modules/@spotify/web-api-ts-sdk/dist/cjs/endpoints/PlayerEndpoints.js
+@@ -72,7 +72,7 @@ class PlayerEndpoints extends EndpointsBase_js_1.default {
+     }
+     async addItemToPlaybackQueue(uri, device_id) {
+         const params = this.paramsFor({ uri, device_id });
+-        await this.putRequest(`me/player/queue${params}`);
++        await this.postRequest(`me/player/queue${params}`);
+     }
+ }
+ exports.default = PlayerEndpoints;
+diff --git a/node_modules/@spotify/web-api-ts-sdk/dist/mjs/endpoints/PlayerEndpoints.js b/node_modules/@spotify/web-api-ts-sdk/dist/mjs/endpoints/PlayerEndpoints.js
+index adff8aa..b4d7bd3 100644
+--- a/node_modules/@spotify/web-api-ts-sdk/dist/mjs/endpoints/PlayerEndpoints.js
++++ b/node_modules/@spotify/web-api-ts-sdk/dist/mjs/endpoints/PlayerEndpoints.js
+@@ -67,7 +67,7 @@ export default class PlayerEndpoints extends EndpointsBase {
+     }
+     async addItemToPlaybackQueue(uri, device_id) {
+         const params = this.paramsFor({ uri, device_id });
+-        await this.putRequest(`me/player/queue${params}`);
++        await this.postRequest(`me/player/queue${params}`);
+     }
+ }
+ //# sourceMappingURL=PlayerEndpoints.js.map
+\ No newline at end of file
+diff --git a/node_modules/@spotify/web-api-ts-sdk/src/endpoints/PlayerEndpoints.ts b/node_modules/@spotify/web-api-ts-sdk/src/endpoints/PlayerEndpoints.ts
+index d82d4a2..0dd6b4b 100644
+--- a/node_modules/@spotify/web-api-ts-sdk/src/endpoints/PlayerEndpoints.ts
++++ b/node_modules/@spotify/web-api-ts-sdk/src/endpoints/PlayerEndpoints.ts
+@@ -89,6 +89,6 @@ export default class PlayerEndpoints extends EndpointsBase {
+ 
+     public async addItemToPlaybackQueue(uri: string, device_id?: string) {
+         const params = this.paramsFor({ uri, device_id });
+-        await this.putRequest(`me/player/queue${params}`);
++        await this.postRequest(`me/player/queue${params}`);
+     }
+ }

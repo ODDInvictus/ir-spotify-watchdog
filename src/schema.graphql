@@ -1,0 +1,95 @@
+type PlaybackState {
+	device: Device!
+	repeat_state: String!
+	shuffle_state: Boolean!
+	context: Context
+	timestamp: Int!
+	progress_ms: Int!
+	is_playing: Boolean!
+	item: Track!
+	currently_playing_type: String!
+}
+
+type Track {
+	album: Album!
+	artists: [Artist]!
+	available_markets: [String]!
+	disc_number: Int!
+	duration_ms: Int!
+	explicit: Boolean!
+	href: String!
+	id: String!
+	is_local: Boolean!
+	name: String!
+	preview_url: String!
+	track_number: Int!
+	type: String!
+	uri: String!
+	is_playable: Boolean!
+}
+
+type Album {
+	album_type: String!
+	genres: [String]!
+	href: String!
+	id: String!
+	images: [Image]!
+	label: String!
+	name: String!
+	popularity: Int!
+	release_date: String!
+	release_date_precision: String!
+	total_tracks: Int!
+	type: String!
+	uri: String!
+	album_group: String!
+	artists: [Artist]!
+}
+
+type Image {
+	height: Int!
+	url: String!
+	width: Int!
+}
+
+type Artist {
+	href: String!
+	id: String!
+	name: String!
+	type: String!
+	uri: String!
+}
+
+type Device {
+	id: String
+	is_active: Boolean!
+	is_private_session: Boolean!
+	is_restricted: Boolean!
+	name: String!
+	type: String!
+	volume_percent: Float!
+}
+
+type Context {
+	type: String!
+	href: String!
+	uri: String!
+}
+
+type GetQueueOutput {
+	currently_playing: Track
+	queue: [Track]!
+}
+
+type Query {
+	playbackState: PlaybackState
+	getQueue: GetQueueOutput
+}
+
+input EnqueueTrackInput {
+	trackId: String!
+}
+
+type Mutation {
+	enqueueTrack(input: EnqueueTrackInput): Boolean
+}
