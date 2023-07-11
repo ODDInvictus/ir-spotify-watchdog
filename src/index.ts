@@ -31,9 +31,7 @@ if (token) {
 
       const token = getAcccesToken()
 
-      let opts = {
-
-      }
+      let opts = {}
 
       if (token && token.expires_at < Date.now()) {
         // Refresh token
@@ -68,7 +66,7 @@ const root = {
       console.error(res)
     }
 
-    return !!res
+    return !res
   }
 }
 
@@ -82,6 +80,8 @@ app.get('/', async (req, res) => {
 })
 
 app.get('/login', async (req, res) => {
+
+  console.log('Logging in')
 
   const state = generateRandomString(16)
   const scope = 'user-read-playback-state user-modify-playback-state user-read-currently-playing'
